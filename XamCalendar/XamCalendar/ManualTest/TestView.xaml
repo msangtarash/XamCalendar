@@ -7,8 +7,5 @@
     <ContentPage.BindingContext>
         <app:TestViewModel />
     </ContentPage.BindingContext>
-    <Label
-        HorizontalOptions="Center"
-        Text="{Binding Test}"
-        VerticalOptions="Center" />
+    <app:CalendarView />
 </ContentPage>
