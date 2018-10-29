@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamCalendar.iOS", "XamCalen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamCalendar.UWP", "XamCalendar\XamCalendar.UWP\XamCalendar.UWP.csproj", "{FD4CA1EC-29D2-4381-B09E-940A41CFFE92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamCalendar", "XamCalendar\XamCalendar\XamCalendar.csproj", "{84FDFEDB-06F9-4168-B821-218B13E8F8E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamCalendar", "XamCalendar\XamCalendar\XamCalendar.csproj", "{84FDFEDB-06F9-4168-B821-218B13E8F8E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

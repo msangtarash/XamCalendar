@@ -3,9 +3,29 @@
     x:Class="XamCalendar.TestView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:app="clr-namespace:XamCalendar">
+    xmlns:app="clr-namespace:XamCalendar"
+    xmlns:culture="clr-namespace:System.Globalization;assembly=netstandard"
+    xmlns:noda="clr-namespace:NodaTime;assembly=NodaTime"
+    BackgroundColor="LightGray">
+
     <ContentPage.BindingContext>
         <app:TestViewModel />
     </ContentPage.BindingContext>
-    <app:CalendarView />
+
+    <StackLayout>
+
+        <app:CalendarView />
+
+        <app:CalendarView CalendarSystem="{x:Static noda:CalendarSystem.PersianArithmetic}">
+            <app:CalendarView.Culture>
+                <culture:CultureInfo>
+                    <x:Arguments>
+                        <x:String>Fa</x:String>
+                    </x:Arguments>
+                </culture:CultureInfo>
+            </app:CalendarView.Culture>
+        </app:CalendarView>
+
+    </StackLayout>
+
 </ContentPage>
