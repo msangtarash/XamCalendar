@@ -16,14 +16,14 @@
                         BindingContext="{TemplateBinding}"
                         BorderColor="Transparent"
                         BorderRadius="25"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
                         BorderWidth="2"
                         Command="{Binding SelectDateCommand}"
                         CommandParameter="{Binding Day}"
                         FontFamily="{Binding FontFamily}"
+                        HorizontalOptions="Center"
                         Text="{Binding Day.LocalDate.Day}"
-                        TextColor="DimGray">
+                        TextColor="DimGray"
+                        VerticalOptions="Center">
                         <Button.Triggers>
                             <DataTrigger
                                 Binding="{Binding Day.IsToday}"

@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TemplatedView xmlns="http://xamarin.com/schemas/2014/forms"
-               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-               x:Class="XamCalendar.CalendarView"
-               xmlns:calendar="clr-namespace:XamCalendar">
+<TemplatedView
+    x:Class="XamCalendar.CalendarView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:calendar="clr-namespace:XamCalendar">
     <TemplatedView.Resources>
         <Style TargetType="calendar:CalendarView">
             <Setter Property="ControlTemplate">
                 <ControlTemplate>
-                    <Button BindingContext="{TemplateBinding}" Text="{Binding SelectedDate}" Command="{Binding OpenPopupCommand}"/>
+                    <Button
+                        BindingContext="{TemplateBinding}"
+                        Command="{Binding OpenPopupCommand}"
+                        Text="{Binding SelectedDate}" />
                 </ControlTemplate>
             </Setter>
         </Style>

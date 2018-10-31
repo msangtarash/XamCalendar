@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage
-             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:calendar="clr-namespace:XamCalendar"
-             x:Class="XamCalendar.CalendarPopupView">
-    
+    x:Class="XamCalendar.CalendarPopupView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:calendar="clr-namespace:XamCalendar"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
     <pages:PopupPage.Resources>
 
         <Style TargetType="calendar:CalendarPopupView">
@@ -12,14 +13,14 @@
                 <ControlTemplate>
                     <StackLayout
                         BackgroundColor="White"
-                        WidthRequest="500"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
                         BindingContext="{TemplateBinding}"
                         CompressedLayout.IsHeadless="True"
-                        Spacing="0">
+                        HorizontalOptions="Center"
+                        Spacing="0"
+                        VerticalOptions="Center"
+                        WidthRequest="500">
                         <StackLayout.Resources>
-                            
+
                             <Style TargetType="Label">
                                 <Setter Property="VerticalTextAlignment" Value="Center" />
                                 <Setter Property="HorizontalTextAlignment" Value="Center" />
@@ -28,14 +29,14 @@
                                 <Setter Property="BackgroundColor" Value="WhiteSmoke" />
                                 <Setter Property="FontFamily" Value="{Binding FontFamily}" />
                             </Style>
-                            
+
                             <Style BaseResourceKey="DefaultCalendarDayViewStyle" TargetType="calendar:CalendarDayView">
                                 <Setter Property="SelectDateCommand" Value="{Binding SelectDateCommand}" />
                                 <Setter Property="FontFamily" Value="{Binding FontFamily}" />
-                                <Setter Property="SelectedColor" Value="{Binding SelectedColor}"/>
-                                <Setter Property="TodayColor" Value="{Binding TodayColor}"/>
+                                <Setter Property="SelectedColor" Value="{Binding SelectedColor}" />
+                                <Setter Property="TodayColor" Value="{Binding TodayColor}" />
                             </Style>
-                            
+
                         </StackLayout.Resources>
 
                         <StackLayout
@@ -122,97 +123,97 @@
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="0"
-                                Day="{Binding Days[0]}"/>
+                                Day="{Binding Days[0]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="1"
-                                Day="{Binding Days[1]}"/>
+                                Day="{Binding Days[1]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="2"
-                                Day="{Binding Days[2]}"/>
+                                Day="{Binding Days[2]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="3"
-                                Day="{Binding Days[3]}"/>
+                                Day="{Binding Days[3]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="4"
-                                Day="{Binding Days[4]}"/>
+                                Day="{Binding Days[4]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="5"
-                                Day="{Binding Days[5]}"/>
+                                Day="{Binding Days[5]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="6"
-                                Day="{Binding Days[6]}"/>
+                                Day="{Binding Days[6]}" />
 
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="0"
-                                Day="{Binding Days[7]}"/>
+                                Day="{Binding Days[7]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="1"
-                                Day="{Binding Days[8]}"/>
+                                Day="{Binding Days[8]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="2"
-                                Day="{Binding Days[9]}"/>
+                                Day="{Binding Days[9]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="3"
-                                Day="{Binding Days[10]}"/>
+                                Day="{Binding Days[10]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="4"
-                                Day="{Binding Days[11]}"/>
+                                Day="{Binding Days[11]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="5"
-                                Day="{Binding Days[12]}"/>
+                                Day="{Binding Days[12]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="6"
-                                Day="{Binding Days[13]}"/>
+                                Day="{Binding Days[13]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="0"
-                                Day="{Binding Days[14]}"/>
+                                Day="{Binding Days[14]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="1"
-                                Day="{Binding Days[15]}"/>
+                                Day="{Binding Days[15]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="2"
-                                Day="{Binding Days[16]}"/>
+                                Day="{Binding Days[16]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="3"
-                                Day="{Binding Days[17]}"/>
+                                Day="{Binding Days[17]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="4"
-                                Day="{Binding Days[18]}"/>
+                                Day="{Binding Days[18]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="5"
-                                Day="{Binding Days[19]}"/>
+                                Day="{Binding Days[19]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="6"
-                                Day="{Binding Days[20]}"/>
+                                Day="{Binding Days[20]}" />
 
                             <calendar:CalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="0"
-                                Day="{Binding Days[21]}"/>
+                                Day="{Binding Days[21]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="1"
-                                Day="{Binding Days[22]}"/>
+                                Day="{Binding Days[22]}" />
                             <calendar:CalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="2"
@@ -257,19 +258,41 @@
                             <calendar:CalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="5"
-                                 Day="{Binding Days[33]}" />
+                                Day="{Binding Days[33]}" />
                             <calendar:CalendarDayView
-                                Grid.Row="7" 
-                                Grid.Column="6" 
-                                BindingContext="{Binding }" Day="{Binding Days[34]}" />
+                                Grid.Row="7"
+                                Grid.Column="6"
+                                BindingContext="{Binding}"
+                                Day="{Binding Days[34]}" />
 
-                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="0" Day="{Binding Days[35]}" />
-                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="1" Day="{Binding Days[36]}" />
-                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="2" Day="{Binding Days[37]}" />
-                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="3" Day="{Binding Days[38]}" />
-                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="4" Day="{Binding Days[39]}" />
-                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="5" Day="{Binding Days[40]}" />
-                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="6" Day="{Binding Days[41]}" />
+                            <calendar:CalendarDayView
+                                Grid.Row="8"
+                                Grid.Column="0"
+                                Day="{Binding Days[35]}" />
+                            <calendar:CalendarDayView
+                                Grid.Row="8"
+                                Grid.Column="1"
+                                Day="{Binding Days[36]}" />
+                            <calendar:CalendarDayView
+                                Grid.Row="8"
+                                Grid.Column="2"
+                                Day="{Binding Days[37]}" />
+                            <calendar:CalendarDayView
+                                Grid.Row="8"
+                                Grid.Column="3"
+                                Day="{Binding Days[38]}" />
+                            <calendar:CalendarDayView
+                                Grid.Row="8"
+                                Grid.Column="4"
+                                Day="{Binding Days[39]}" />
+                            <calendar:CalendarDayView
+                                Grid.Row="8"
+                                Grid.Column="5"
+                                Day="{Binding Days[40]}" />
+                            <calendar:CalendarDayView
+                                Grid.Row="8"
+                                Grid.Column="6"
+                                Day="{Binding Days[41]}" />
                         </Grid>
 
                     </StackLayout>
