@@ -14,9 +14,9 @@
 
     <StackLayout>
 
-        <app:CalendarView />
+        <app:CalendarView HorizontalOptions="Center" BackgroundColor="White"/>
 
-        <app:CalendarView CalendarSystem="{x:Static noda:CalendarSystem.PersianArithmetic}">
+        <app:CalendarView CalendarSystem="{x:Static noda:CalendarSystem.PersianArithmetic}" FlowDirection="RightToLeft" BackgroundColor="White" HorizontalOptions="Center">
             <app:CalendarView.Culture>
                 <culture:CultureInfo>
                     <x:Arguments>
@@ -25,7 +25,6 @@
                 </culture:CultureInfo>
             </app:CalendarView.Culture>
         </app:CalendarView>
-
     </StackLayout>
 
 </ContentPage>

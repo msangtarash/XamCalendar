@@ -3,16 +3,21 @@
     x:Class="XamCalendar.CalendarView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:calendar="clr-namespace:XamCalendar">
+    xmlns:calendar="clr-namespace:XamCalendar"
+    HorizontalOptions="Center"
+    VerticalOptions="Center">
     <TemplatedView.Resources>
-
+        <ResourceDictionary>
+            <calendar:DayVisiblityConverter x:Key="DayVisiblityConverter"/>
+        </ResourceDictionary>
         <Style TargetType="calendar:CalendarView">
             <Setter Property="ControlTemplate">
                 <ControlTemplate>
-
                     <StackLayout
+                        WidthRequest="500"
+                        BindingContext="{TemplateBinding}"
                         CompressedLayout.IsHeadless="True"
-                        FlowDirection="{TemplateBinding Direction}"
+                        FlowDirection="{Binding Direction}"
                         Spacing="0">
                         <StackLayout.Resources>
                             <Style TargetType="Label">
@@ -21,7 +26,14 @@
                                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                                 <Setter Property="TextColor" Value="Gray" />
                                 <Setter Property="BackgroundColor" Value="WhiteSmoke" />
-                                <Setter Property="FontFamily" Value="{TemplateBinding FontFamily}" />
+                                <Setter Property="FontFamily" Value="{Binding FontFamily}" />
+                            </Style>
+                            <Style BaseResourceKey="DefaultCalendarDayViewStyle" TargetType="calendar:CalendarDayView">
+                                <Setter Property="SelectDateCommand" Value="{Binding SelectDateCommand}" />
+                                <Setter Property="FontFamily" Value="{Binding FontFamily}" />
+                                <Setter Property="IsVisible" Value="{Binding Converter={StaticResource DayVisiblityConverter}}"/>
+                                <Setter Property="SelectedColor" Value="{Binding SelectedColor}"/>
+                                <Setter Property="TodayColor" Value="{Binding TodayColor}"/>
                             </Style>
                         </StackLayout.Resources>
 
@@ -38,16 +50,16 @@
                                 </Style>
                             </StackLayout.Resources>
                             <Button
-                                Command="{TemplateBinding ShowNextMonthCommand}"
+                                Command="{Binding ShowNextMonthCommand}"
                                 HorizontalOptions="Start"
                                 Text="&lt;" />
                             <Label
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="CenterAndExpand"
-                                Text="{TemplateBinding CalendarTitle}"
+                                Text="{Binding CalendarTitle}"
                                 TextColor="DarkSlateGray" />
                             <Button
-                                Command="{TemplateBinding ShowPreviousMonthCommand}"
+                                Command="{Binding ShowPreviousMonthCommand}"
                                 HorizontalOptions="End"
                                 Text="&gt;" />
                         </StackLayout>
@@ -56,18 +68,11 @@
                             ColumnSpacing="0"
                             CompressedLayout.IsHeadless="True"
                             RowSpacing="0">
-
-                            <Grid.Resources>
-                                <Style BaseResourceKey="DefaultCalendarDayViewStyle" TargetType="calendar:CalendarDayView">
-                                    <Setter Property="SelectDateCommand" Value="{TemplateBinding SelectDateCommand}" />
-                                    <Setter Property="FontFamily" Value="{TemplateBinding FontFamily}" />
-                                </Style>
-                            </Grid.Resources>
-
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="1" />
+                                <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -87,177 +92,185 @@
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                Text="{TemplateBinding DaysOfWeekNames[0]}" />
+                                Text="{Binding DaysOfWeekNames[0]}" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Text="{TemplateBinding DaysOfWeekNames[1]}" />
+                                Text="{Binding DaysOfWeekNames[1]}" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="2"
-                                Text="{TemplateBinding DaysOfWeekNames[2]}" />
+                                Text="{Binding DaysOfWeekNames[2]}" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="3"
-                                Text="{TemplateBinding DaysOfWeekNames[3]}" />
+                                Text="{Binding DaysOfWeekNames[3]}" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="4"
-                                Text="{TemplateBinding DaysOfWeekNames[4]}" />
+                                Text="{Binding DaysOfWeekNames[4]}" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="5"
-                                Text="{TemplateBinding DaysOfWeekNames[5]}" />
+                                Text="{Binding DaysOfWeekNames[5]}" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="6"
-                                Text="{TemplateBinding DaysOfWeekNames[6]}" />
+                                Text="{Binding DaysOfWeekNames[6]}" />
 
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="0"
-                                Day="{TemplateBinding Days[0]}" />
+                                BindingContext="{Binding Days[0]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="1"
-                                Day="{TemplateBinding Days[1]}" />
+                                BindingContext="{Binding Days[1]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="2"
-                                Day="{TemplateBinding Days[2]}" />
+                                BindingContext="{Binding Days[2]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="3"
-                                Day="{TemplateBinding Days[3]}" />
+                                BindingContext="{Binding Days[3]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="4"
-                                Day="{TemplateBinding Days[4]}" />
+                                BindingContext="{Binding Days[4]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="5"
-                                Day="{TemplateBinding Days[5]}" />
+                                BindingContext="{Binding Days[5]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="6"
-                                Day="{TemplateBinding Days[6]}" />
+                                BindingContext="{Binding Days[6]}" Day="{Binding}"/>
 
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="0"
-                                Day="{TemplateBinding Days[7]}" />
+                                BindingContext="{Binding Days[7]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="1"
-                                Day="{TemplateBinding Days[8]}" />
+                                BindingContext="{Binding Days[8]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="2"
-                                Day="{TemplateBinding Days[9]}" />
+                                BindingContext="{Binding Days[9]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="3"
-                                Day="{TemplateBinding Days[10]}" />
+                                BindingContext="{Binding Days[10]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="4"
-                                Day="{TemplateBinding Days[11]}" />
+                                BindingContext="{Binding Days[11]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="5"
-                                Day="{TemplateBinding Days[12]}" />
+                                BindingContext="{Binding Days[12]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="6"
-                                Day="{TemplateBinding Days[13]}" />
-
+                                BindingContext="{Binding Days[13]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="0"
-                                Day="{TemplateBinding Days[14]}" />
+                                BindingContext="{Binding Days[14]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="1"
-                                Day="{TemplateBinding Days[15]}" />
+                                BindingContext="{Binding Days[15]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="2"
-                                Day="{TemplateBinding Days[16]}" />
+                                BindingContext="{Binding Days[16]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="3"
-                                Day="{TemplateBinding Days[17]}" />
+                                BindingContext="{Binding Days[17]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="4"
-                                Day="{TemplateBinding Days[18]}" />
+                                BindingContext="{Binding Days[18]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="5"
-                                Day="{TemplateBinding Days[19]}" />
+                                BindingContext="{Binding Days[19]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="6"
-                                Day="{TemplateBinding Days[20]}" />
+                                BindingContext="{Binding Days[20]}" Day="{Binding}"/>
 
                             <calendar:CalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="0"
-                                Day="{TemplateBinding Days[21]}" />
+                                BindingContext="{Binding Days[21]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="1"
-                                Day="{TemplateBinding Days[22]}" />
+                                BindingContext="{Binding Days[22]}" Day="{Binding}"/>
                             <calendar:CalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="2"
-                                Day="{TemplateBinding Days[23]}" />
+                                BindingContext="{Binding Days[23]}" Day="{Binding}" />
                             <calendar:CalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="3"
-                                Day="{TemplateBinding Days[24]}" />
+                                BindingContext="{Binding Days[24]}" Day="{Binding}" />
                             <calendar:CalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="4"
-                                Day="{TemplateBinding Days[25]}" />
+                                BindingContext="{Binding Days[25]}" Day="{Binding}" />
                             <calendar:CalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="5"
-                                Day="{TemplateBinding Days[26]}" />
+                                BindingContext="{Binding Days[26]}" Day="{Binding}" />
                             <calendar:CalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="6"
-                                Day="{TemplateBinding Days[27]}" />
+                                BindingContext="{Binding Days[27]}" Day="{Binding}" />
 
                             <calendar:CalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="0"
-                                Day="{TemplateBinding Days[28]}" />
+                                BindingContext="{Binding Days[28]}" Day="{Binding}" />
                             <calendar:CalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="1"
-                                Day="{TemplateBinding Days[29]}" />
+                                BindingContext="{Binding Days[29]}" Day="{Binding}" />
                             <calendar:CalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="2"
-                                Day="{TemplateBinding Days[30]}" />
+                                BindingContext="{Binding Days[30]}" Day="{Binding}" />
                             <calendar:CalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="3"
-                                Day="{TemplateBinding Days[31]}" />
+                                BindingContext="{Binding Days[31]}" Day="{Binding}" />
                             <calendar:CalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="4"
-                                Day="{TemplateBinding Days[32]}" />
+                                BindingContext="{Binding Days[32]}" Day="{Binding}" />
                             <calendar:CalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="5"
-                                Day="{TemplateBinding Days[33]}" />
+                                BindingContext="{Binding Days[33]}" Day="{Binding}" />
                             <calendar:CalendarDayView
-                                Grid.Row="7"
-                                Grid.Column="6"
-                                Day="{TemplateBinding Days[34]}" />
+                                Grid.Row="7" 
+                                Grid.Column="6" 
+                                BindingContext="{Binding Days[34]}" Day="{Binding}" />
+
+                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="0" BindingContext="{Binding Days[35]}" Day="{Binding}" />
+                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="1" BindingContext="{Binding Days[36]}" Day="{Binding}" />
+                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="2" BindingContext="{Binding Days[37]}" Day="{Binding}" />
+                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="3" BindingContext="{Binding Days[38]}" Day="{Binding}" />
+                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="4" BindingContext="{Binding Days[39]}" Day="{Binding}" />
+                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="5" BindingContext="{Binding Days[40]}" Day="{Binding}" />
+                            <calendar:CalendarDayView Grid.Row="8" Grid.Column="6" BindingContext="{Binding Days[41]}" Day="{Binding}" />
                         </Grid>
+
                     </StackLayout>
                 </ControlTemplate>
             </Setter>

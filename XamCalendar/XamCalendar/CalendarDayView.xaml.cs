@@ -1,5 +1,7 @@
 ﻿using NodaTime;
+using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -44,7 +46,7 @@ namespace XamCalendar
             set { SetValue(SelectedColorProperty, value); }
         }
 
-        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(CalendarDayView), default(string));
+        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(CalendarDayView), default(string), defaultBindingMode: BindingMode.OneWay);
         public string FontFamily
         {
             get { return (string)GetValue(FontFamilyProperty); }
@@ -61,5 +63,20 @@ namespace XamCalendar
         public bool IsSelected { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+    }
+
+    public class DayVisiblityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+                return false;
+            return true;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

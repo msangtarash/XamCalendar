@@ -59,7 +59,7 @@ namespace XamCalendar
         {
             DayOfWeek firstDayOfWeekOfCurrentCulture = Culture.DateTimeFormat.FirstDayOfWeek;
 
-            DaysOfWeek = Enum.GetValues(typeof(DayOfWeek))
+            List<DayOfWeekInfo> daysOfWeek = Enum.GetValues(typeof(DayOfWeek))
                .Cast<DayOfWeek>()
                .OrderBy(d => (d - firstDayOfWeekOfCurrentCulture + 7) % 7)
                .Select((d, i) => new DayOfWeekInfo
@@ -70,7 +70,7 @@ namespace XamCalendar
                })
                .ToList();
 
-            DaysOfWeekNames = DaysOfWeek.Select(d => d.DayOfWeekName).ToArray();
+            DaysOfWeekNames = daysOfWeek.Select(d => d.DayOfWeekName).ToArray();
 
             if (CalendarSystem != CalendarSystemProperty.DefaultValue)
                 CurrentDay = CurrentDay.WithCalendar(CalendarSystem);
@@ -86,7 +86,7 @@ namespace XamCalendar
                 firstDayOfMonth = LocalDate.Subtract(firstDayOfMonth, Period.FromDays(1));
             }
 
-            DayOfWeekInfo firstDayOfMonthDayOfWeek = DaysOfWeek.Single(d => d.IsoDayOfWeek == firstDayOfMonth.DayOfWeek);
+            DayOfWeekInfo firstDayOfMonthDayOfWeek = daysOfWeek.Single(d => d.IsoDayOfWeek == firstDayOfMonth.DayOfWeek);
 
             int prevMonthDaysInCurrentMonthView = (firstDayOfMonthDayOfWeek.DayOfWeekNumber - 1);
             int nextMonthDaysInCurrentMonthView = 42 - thisMonthDaysCount - prevMonthDaysInCurrentMonthView;
@@ -113,13 +113,15 @@ namespace XamCalendar
             {
                 Days.Add(null);
             }
+
+            if (Days.Count != 42)
+                throw new InvalidOperationException($"{nameof(Days)}'s count is {Days.Count}, but it should be 42");
         }
 
         public virtual string CalendarTitle { get; protected set; }
         public virtual string[] DaysOfWeekNames { get; protected set; }
         public virtual List<CalendarDay> Days { get; protected set; }
         public virtual LocalDate CurrentDay { get; protected set; }
-        public virtual List<DayOfWeekInfo> DaysOfWeek { get; protected set; }
 
         public virtual ICommand SelectDateCommand { get; protected set; }
         public virtual ICommand ShowNextMonthCommand { get; protected set; }
@@ -160,11 +162,26 @@ namespace XamCalendar
         public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(CalendarView), defaultValue: null, defaultBindingMode: BindingMode.OneTime);
 
         // ToDo: SelectedDate must be two way
-
         public DateTime? SelectedDate
         {
             get { return (DateTime?)GetValue(SelectedDateProperty); }
             set { SetValue(SelectedDateProperty, value); }
+        }
+
+        public static BindableProperty TodayColorProperty = BindableProperty.Create(nameof(TodayColor), typeof(Color), typeof(CalendarDayView), defaultValue: Color.DeepPink, defaultBindingMode: BindingMode.OneWay);
+
+        public Color TodayColor
+        {
+            get { return (Color)GetValue(TodayColorProperty); }
+            set { SetValue(TodayColorProperty, value); }
+        }
+
+        public static BindableProperty SelectedColorProperty = BindableProperty.Create(nameof(SelectedColor), typeof(Color), typeof(CalendarDayView), defaultValue: Color.DeepPink, defaultBindingMode: BindingMode.OneWay);
+
+        public Color SelectedColor
+        {
+            get { return (Color)GetValue(SelectedColorProperty); }
+            set { SetValue(SelectedColorProperty, value); }
         }
     }
 
