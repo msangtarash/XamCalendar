@@ -1,5 +1,4 @@
 ﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace XamCalendar
 {
@@ -8,6 +7,8 @@ namespace XamCalendar
         public App()
         {
             InitializeComponent();
+
+            MainPage = new TestView { };
         }
     }
 }
