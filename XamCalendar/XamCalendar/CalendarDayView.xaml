@@ -4,9 +4,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:calendar="clr-namespace:XamCalendar"
-    HeightRequest="40"
+    HeightRequest="50"
     HorizontalOptions="Center"
-    WidthRequest="40">
+    WidthRequest="50">
     <TemplatedView.Resources>
         <Style x:Key="DefaultCalendarDayViewStyle" TargetType="calendar:CalendarDayView">
             <Setter Property="ControlTemplate">
@@ -15,7 +15,9 @@
                         BackgroundColor="Transparent"
                         BindingContext="{TemplateBinding}"
                         BorderColor="Transparent"
-                        BorderRadius="50"
+                        BorderRadius="25"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
                         BorderWidth="2"
                         Command="{Binding SelectDateCommand}"
                         CommandParameter="{Binding Day}"
