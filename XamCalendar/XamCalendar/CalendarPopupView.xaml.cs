@@ -133,7 +133,7 @@ namespace XamCalendar
             CalendarPopupView calendarPopupView = (CalendarPopupView)sender;
             calendarPopupView.CalcCurrentMonthDays();
         });
-        public CultureInfo Culture
+        public virtual CultureInfo Culture
         {
             get { return (CultureInfo)GetValue(CultureProperty); }
             set { SetValue(CultureProperty, value); }
@@ -144,7 +144,7 @@ namespace XamCalendar
             CalendarPopupView calendarPopupView = (CalendarPopupView)sender;
             calendarPopupView.CalcCurrentMonthDays();
         });
-        public CalendarSystem CalendarSystem
+        public virtual CalendarSystem CalendarSystem
         {
             get { return (CalendarSystem)GetValue(CalendarSystemProperty); }
             set { SetValue(CalendarSystemProperty, value); }
@@ -157,22 +157,22 @@ namespace XamCalendar
             set { SetValue(FontFamilyProperty, value); }
         }
 
-        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(CalendarPopupView), defaultValue: null, defaultBindingMode: BindingMode.TwoWay);
-        public DateTime? SelectedDate
+        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(CalendarPopupView), defaultValue: null, defaultBindingMode: BindingMode.OneWayToSource /*Must be two way*/);
+        public virtual DateTime? SelectedDate
         {
             get { return (DateTime?)GetValue(SelectedDateProperty); }
             set { SetValue(SelectedDateProperty, value); }
         }
 
         public static BindableProperty TodayColorProperty = BindableProperty.Create(nameof(TodayColor), typeof(Color), typeof(CalendarPopupView), defaultValue: Color.DeepPink, defaultBindingMode: BindingMode.OneWay);
-        public Color TodayColor
+        public virtual Color TodayColor
         {
             get { return (Color)GetValue(TodayColorProperty); }
             set { SetValue(TodayColorProperty, value); }
         }
 
         public static BindableProperty SelectedColorProperty = BindableProperty.Create(nameof(SelectedColor), typeof(Color), typeof(CalendarPopupView), defaultValue: Color.DeepPink, defaultBindingMode: BindingMode.OneWay);
-        public Color SelectedColor
+        public virtual Color SelectedColor
         {
             get { return (Color)GetValue(SelectedColorProperty); }
             set { SetValue(SelectedColorProperty, value); }
@@ -181,19 +181,19 @@ namespace XamCalendar
 
     public class DayOfWeekInfo : INotifyPropertyChanged
     {
-        public IsoDayOfWeek IsoDayOfWeek { get; set; }
+        public virtual IsoDayOfWeek IsoDayOfWeek { get; set; }
 
         /// <summary>
         /// Based on current culture.
         /// </summary>
-        public string DayOfWeekName { get; set; }
+        public virtual string DayOfWeekName { get; set; }
 
         /// <summary>
         /// Based on current culture.
         /// </summary>
-        public int DayOfWeekNumber { get; set; }
+        public virtual int DayOfWeekNumber { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public virtual event PropertyChangedEventHandler PropertyChanged;
     }
 }
 

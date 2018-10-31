@@ -11,7 +11,9 @@
                     <Button
                         BindingContext="{TemplateBinding}"
                         Command="{Binding OpenPopupCommand}"
-                        Text="{Binding SelectedDate}" />
+                        FlowDirection="{Binding FlowDirection}"
+                        FontFamily="{Binding FontFamily}"
+                        Text="{Binding DisplayText}" />
                 </ControlTemplate>
             </Setter>
         </Style>

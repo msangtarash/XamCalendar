@@ -11,9 +11,9 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
-        <calendar:CalendarView Style="{StaticResource Persian-Solar-Calendar}" />
-        <calendar:CalendarView Style="{StaticResource Islamic-Calendar}" />
-        <calendar:CalendarView />
+        <calendar:CalendarView Style="{StaticResource Persian-Solar-Calendar}" Text="لطفا تاریخ پرواز را انتخاب کنید" />
+        <calendar:CalendarView Style="{StaticResource Islamic-Calendar}" Text="يرجى تحديد تاريخ الرحلة" />
+        <calendar:CalendarView Text="Please select a flight date" />
     </StackLayout>
 
 </ContentPage>

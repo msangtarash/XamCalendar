@@ -31,49 +31,66 @@ namespace XamCalendar
             PopupNavigation.Instance.PushAsync(CalendarPopupView);
         }
 
-        public CalendarPopupView CalendarPopupView { get; protected set; }
+        public virtual CalendarPopupView CalendarPopupView { get; protected set; }
         public virtual ICommand OpenPopupCommand { get; protected set; }
 
         public static BindableProperty CultureProperty = BindableProperty.Create(nameof(Culture), typeof(CultureInfo), typeof(CalendarView), defaultValue: CultureInfo.CurrentUICulture, defaultBindingMode: BindingMode.OneWay);
-        public CultureInfo Culture
+        public virtual CultureInfo Culture
         {
             get { return (CultureInfo)GetValue(CultureProperty); }
             set { SetValue(CultureProperty, value); }
         }
 
         public static BindableProperty CalendarSystemProperty = BindableProperty.Create(nameof(CalendarSystem), typeof(CalendarSystem), typeof(CalendarView), defaultValue: CalendarSystem.Gregorian, defaultBindingMode: BindingMode.OneWay);
-        public CalendarSystem CalendarSystem
+        public virtual CalendarSystem CalendarSystem
         {
             get { return (CalendarSystem)GetValue(CalendarSystemProperty); }
             set { SetValue(CalendarSystemProperty, value); }
         }
 
         public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(CalendarView), defaultValue: null, defaultBindingMode: BindingMode.OneWay);
-        public string FontFamily
+        public virtual string FontFamily
         {
             get { return (string)GetValue(FontFamilyProperty); }
             set { SetValue(FontFamilyProperty, value); }
         }
 
-        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(CalendarView), defaultValue: null, defaultBindingMode: BindingMode.TwoWay);
-        public DateTime? SelectedDate
+        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(CalendarView), defaultValue: null, defaultBindingMode: BindingMode.OneWayToSource /*Must be two way*/);
+        public virtual DateTime? SelectedDate
         {
             get { return (DateTime?)GetValue(SelectedDateProperty); }
             set { SetValue(SelectedDateProperty, value); }
         }
 
         public static BindableProperty TodayColorProperty = BindableProperty.Create(nameof(TodayColor), typeof(Color), typeof(CalendarView), defaultValue: Color.DeepPink, defaultBindingMode: BindingMode.OneWay);
-        public Color TodayColor
+        public virtual Color TodayColor
         {
             get { return (Color)GetValue(TodayColorProperty); }
             set { SetValue(TodayColorProperty, value); }
         }
 
         public static BindableProperty SelectedColorProperty = BindableProperty.Create(nameof(SelectedColor), typeof(Color), typeof(CalendarView), defaultValue: Color.DeepPink, defaultBindingMode: BindingMode.OneWay);
-        public Color SelectedColor
+        public virtual Color SelectedColor
         {
             get { return (Color)GetValue(SelectedColorProperty); }
             set { SetValue(SelectedColorProperty, value); }
+        }
+
+        public string Text { get; set; }
+
+        public static readonly BindableProperty DateDisplayFormatProperty = BindableProperty.Create(nameof(DateDisplayFormat), typeof(string), typeof(CalendarView), defaultValue: "MM/dd/yyyy", defaultBindingMode: BindingMode.OneWay);
+        public virtual string DateDisplayFormat
+        {
+            get { return (string)GetValue(DateDisplayFormatProperty); }
+            set { SetValue(DateDisplayFormatProperty, value); }
+        }
+
+        public string DisplayText
+        {
+            get
+            {
+                return SelectedDate == null ? Text : SelectedDate.Value.ToString(DateDisplayFormat, Culture);
+            }
         }
     }
 }

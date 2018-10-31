@@ -1,7 +1,4 @@
-﻿using NodaTime;
-using Rg.Plugins.Popup.Services;
-using System.ComponentModel;
-using Xamarin.Forms;
+﻿using System.ComponentModel;
 
 namespace XamCalendar
 {
