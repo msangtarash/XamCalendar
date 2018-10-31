@@ -25,6 +25,8 @@
                 </culture:CultureInfo>
             </app:CalendarView.Culture>
         </app:CalendarView>
+        
+        <Button Text="OpenPopup" Command="{Binding OpenPopupCommand}"/>
     </StackLayout>
 
 </ContentPage>
