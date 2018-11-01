@@ -52,7 +52,7 @@ namespace XamCalendar
                 day.IsSelected = day == selectedDay ? true : false;
 
                 if (day.IsSelected)
-                    SelectedDate = day.LocalDate.ToDateTimeUnspecified();
+                    SelectedDate = day.LocalDate;
             }
         }
 
@@ -157,10 +157,10 @@ namespace XamCalendar
             set { SetValue(FontFamilyProperty, value); }
         }
 
-        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(CalendarPopupView), defaultValue: null, defaultBindingMode: BindingMode.OneWayToSource /*Must be two way*/);
-        public virtual DateTime? SelectedDate
+        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(LocalDate?), typeof(CalendarPopupView), defaultValue: null, defaultBindingMode: BindingMode.OneWayToSource /*Must be two way*/);
+        public virtual LocalDate? SelectedDate
         {
-            get { return (DateTime?)GetValue(SelectedDateProperty); }
+            get { return (LocalDate?)GetValue(SelectedDateProperty); }
             set { SetValue(SelectedDateProperty, value); }
         }
 

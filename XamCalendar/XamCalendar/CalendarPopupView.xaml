@@ -12,6 +12,7 @@
             <Setter Property="ControlTemplate">
                 <ControlTemplate>
                     <StackLayout
+                        Margin="5,0"
                         BackgroundColor="White"
                         BindingContext="{TemplateBinding}"
                         HorizontalOptions="Center"
@@ -24,9 +25,11 @@
                                 <Setter Property="VerticalTextAlignment" Value="Center" />
                                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                                <Setter Property="TextColor" Value="Gray" />
+                                <Setter Property="TextColor" Value="LightGray" />
                                 <Setter Property="BackgroundColor" Value="WhiteSmoke" />
                                 <Setter Property="FontFamily" Value="{Binding FontFamily}" />
+                                <Setter Property="FontSize" Value="Micro"/>
+                                <Setter Property="Margin" Value="0,1"/>
                             </Style>
 
                             <Style BaseResourceKey="DefaultCalendarDayViewStyle" TargetType="calendar:CalendarDayView">
@@ -47,7 +50,7 @@
                                 <Style TargetType="Button">
                                     <Setter Property="FontSize" Value="20" />
                                     <Setter Property="BackgroundColor" Value="Transparent" />
-                                    <Setter Property="TextColor" Value="Gray" />
+                                    <Setter Property="TextColor" Value="DimGray" />
                                 </Style>
                             </StackLayout.Resources>
                             <Button
@@ -58,7 +61,8 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="CenterAndExpand"
                                 Text="{Binding CalendarTitle}"
-                                TextColor="DarkSlateGray" />
+                                TextColor="DimGray" 
+                                FontSize="Medium"/>
                             <Button
                                 Command="{Binding ShowPreviousMonthCommand}"
                                 HorizontalOptions="End"
@@ -72,7 +76,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="1" />
+                                <RowDefinition Height="2" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -88,7 +92,9 @@
                             <BoxView
                                 Grid.Row="2"
                                 Grid.ColumnSpan="7"
-                                BackgroundColor="LightGray" />
+                                BackgroundColor="LightGray" 
+                                VerticalOptions="StartAndExpand"
+                                HeightRequest="1"/>
 
                             <Label
                                 Grid.Row="1"
