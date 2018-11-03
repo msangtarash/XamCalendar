@@ -25,11 +25,11 @@
                                 <Setter Property="VerticalTextAlignment" Value="Center" />
                                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                                <Setter Property="TextColor" Value="LightGray" />
+                                <Setter Property="TextColor" Value="DimGray" />
                                 <Setter Property="BackgroundColor" Value="WhiteSmoke" />
                                 <Setter Property="FontFamily" Value="{Binding FontFamily}" />
-                                <Setter Property="FontSize" Value="Micro"/>
-                                <Setter Property="Margin" Value="0,1"/>
+                                <Setter Property="FontSize" Value="Micro" />
+                                <Setter Property="Margin" Value="0,1" />
                             </Style>
 
                             <Style BaseResourceKey="DefaultCalendarDayViewStyle" TargetType="calendar:CalendarDayView">
@@ -59,10 +59,10 @@
                                 Text="&lt;" />
                             <Label
                                 BackgroundColor="Transparent"
+                                FontSize="Medium"
                                 HorizontalOptions="CenterAndExpand"
                                 Text="{Binding CalendarTitle}"
-                                TextColor="DimGray" 
-                                FontSize="Medium"/>
+                                TextColor="DimGray" />
                             <Button
                                 Command="{Binding ShowPreviousMonthCommand}"
                                 HorizontalOptions="End"
@@ -92,9 +92,9 @@
                             <BoxView
                                 Grid.Row="2"
                                 Grid.ColumnSpan="7"
-                                BackgroundColor="LightGray" 
-                                VerticalOptions="StartAndExpand"
-                                HeightRequest="1"/>
+                                BackgroundColor="LightGray"
+                                HeightRequest="1"
+                                VerticalOptions="StartAndExpand" />
 
                             <Label
                                 Grid.Row="1"
