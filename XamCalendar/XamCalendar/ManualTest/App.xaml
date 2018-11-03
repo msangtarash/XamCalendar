@@ -17,20 +17,12 @@
                 <Setter Property="FontFamily" Value="{StaticResource Persian-Solar-Calendar-FontFamily}" />
                 <Setter Property="FlowDirection" Value="RightToLeft" />
                 <Setter Property="CalendarSystem" Value="{x:Static noda:CalendarSystem.PersianArithmetic}" />
-                <Setter Property="DateDisplayFormat" Value="dd MMM yyyy" />
-                <Setter Property="Culture" Value="{x:Static calendar:EnhancedCultures.EnhancedPersian}" />
+                <Setter Property="Culture" Value="Fa" />
             </Style>
             <Style x:Key="Islamic-Calendar" TargetType="calendar:CalendarView">
                 <Setter Property="FlowDirection" Value="RightToLeft" />
                 <Setter Property="CalendarSystem" Value="{x:Static noda:CalendarSystem.IslamicBcl}" />
-                <Setter Property="DateDisplayFormat" Value="dd MMM yyyy" />
-                <Setter Property="Culture">
-                    <culture:CultureInfo>
-                        <x:Arguments>
-                            <x:String>Ar</x:String>
-                        </x:Arguments>
-                    </culture:CultureInfo>
-                </Setter>
+                <Setter Property="Culture" Value="Ar" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

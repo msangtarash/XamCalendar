@@ -1,6 +1,7 @@
 ﻿using NodaTime;
 using Rg.Plugins.Popup.Services;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -14,7 +15,7 @@ namespace XamCalendar
             InitializeComponent();
 
             CalendarPopupView = new CalendarPopupView() { };
-            
+
             CalendarPopupView.SetBinding(CalendarPopupView.CultureProperty, new Binding(nameof(Culture), source: this));
             CalendarPopupView.SetBinding(CalendarPopupView.CalendarSystemProperty, new Binding(nameof(CalendarSystem), source: this));
             CalendarPopupView.SetBinding(CalendarPopupView.SelectedColorProperty, new Binding(nameof(SelectedColor), source: this));
@@ -35,6 +36,7 @@ namespace XamCalendar
         public virtual ICommand OpenPopupCommand { get; protected set; }
 
         public static BindableProperty CultureProperty = BindableProperty.Create(nameof(Culture), typeof(CultureInfo), typeof(CalendarView), defaultValue: CultureInfo.CurrentUICulture, defaultBindingMode: BindingMode.OneWay);
+        [TypeConverter(typeof(StringToCultureInfoConverter))]
         public virtual CultureInfo Culture
         {
             get { return (CultureInfo)GetValue(CultureProperty); }
@@ -76,26 +78,63 @@ namespace XamCalendar
             set { SetValue(SelectedColorProperty, value); }
         }
 
-        public string Text { get; set; }
-
-        public static readonly BindableProperty DateDisplayFormatProperty = BindableProperty.Create(nameof(DateDisplayFormat), typeof(string), typeof(CalendarView), defaultValue: "MM/dd/yyyy", defaultBindingMode: BindingMode.OneWay);
+        public static readonly BindableProperty DateDisplayFormatProperty = BindableProperty.Create(nameof(DateDisplayFormat), typeof(string), typeof(CalendarView), defaultValue: null, defaultBindingMode: BindingMode.OneWay);
         public virtual string DateDisplayFormat
         {
             get { return (string)GetValue(DateDisplayFormatProperty); }
             set { SetValue(DateDisplayFormatProperty, value); }
         }
 
-        public string DisplayText
+        public virtual string Text { get; set; }
+
+        public virtual string DisplayText
         {
             get
             {
                 if (SelectedDate != null)
                 {
-                   return new LocalDate(SelectedDate.Value.Year, SelectedDate.Value.Month, SelectedDate.Value.Day, CalendarSystem.Gregorian).WithCalendar(CalendarSystem).ToString(DateDisplayFormat, Culture);
+                    return new LocalDate(SelectedDate.Value.Year, SelectedDate.Value.Month, SelectedDate.Value.Day, CalendarSystem.Gregorian)
+                         .WithCalendar(CalendarSystem)
+                         .ToString(DateDisplayFormat ?? Culture.DateTimeFormat.ShortDatePattern, Culture);
 
                 }
-                return Text;
+                else
+                {
+                    return Text;
+                }
             }
+        }
+    }
+
+    public class StringToCultureInfoConverter : TypeConverter
+    {
+        private static readonly Dictionary<string, CultureInfo> _CultureInfoCache;
+
+        static StringToCultureInfoConverter()
+        {
+            CultureInfo Fa = new CultureInfo("Fa");
+
+            Fa.DateTimeFormat.MonthNames = Fa.DateTimeFormat.AbbreviatedMonthGenitiveNames = Fa.DateTimeFormat.MonthGenitiveNames = Fa.DateTimeFormat.AbbreviatedMonthNames = new[] { "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند", "" };
+
+            CultureInfo Ar = new CultureInfo("Ar");
+
+            Ar.DateTimeFormat.DayNames = Ar.DateTimeFormat.AbbreviatedDayNames = Ar.DateTimeFormat.ShortestDayNames = new[] { "الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت" };
+
+            _CultureInfoCache = new Dictionary<string, CultureInfo>
+            {
+                { "Fa", Fa },
+                { "Ar", Ar }
+            };
+        }
+
+        public static CultureInfo GetCultureInfo(string cultureName)
+        {
+            return _CultureInfoCache.ContainsKey(cultureName) ? _CultureInfoCache[cultureName] : CultureInfo.GetCultureInfo(cultureName);
+        }
+
+        public override object ConvertFromInvariantString(string value)
+        {
+            return GetCultureInfo(value);
         }
     }
 }

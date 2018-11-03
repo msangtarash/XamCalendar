@@ -11,9 +11,41 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
+
         <calendar:CalendarView Style="{StaticResource Persian-Solar-Calendar}" Text="لطفا تاریخ پرواز را انتخاب کنید" />
+
+        <calendar:CalendarView
+            DateDisplayFormat="dd MMM yyyy"
+            SelectedColor="LightBlue"
+            Style="{StaticResource Persian-Solar-Calendar}"
+            Text="لطفا تاریخ پرواز را انتخاب کنید"
+            TodayColor="Blue" />
+
+        <calendar:CalendarView
+            DateDisplayFormat="dd MMM yyyy"
+            SelectedColor="LightBlue"
+            Style="{StaticResource Persian-Solar-Calendar}"
+            Text="لطفا تاریخ پرواز را انتخاب کنید"
+            TodayColor="Blue">
+            <calendar:CalendarView.ControlTemplate>
+                <ControlTemplate>
+                    <Label
+                        FlowDirection="{TemplateBinding FlowDirection}"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        HorizontalOptions="Center"
+                        Text="{TemplateBinding DisplayText}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{TemplateBinding OpenPopupCommand}" NumberOfTapsRequired="2" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </ControlTemplate>
+            </calendar:CalendarView.ControlTemplate>
+        </calendar:CalendarView>
+
         <calendar:CalendarView Style="{StaticResource Islamic-Calendar}" Text="يرجى تحديد تاريخ الرحلة" />
+
         <calendar:CalendarView Text="Please select a flight date" />
+
     </StackLayout>
 
 </ContentPage>

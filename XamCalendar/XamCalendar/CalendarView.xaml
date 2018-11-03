@@ -9,11 +9,10 @@
             <Setter Property="ControlTemplate">
                 <ControlTemplate>
                     <Button
-                        BindingContext="{TemplateBinding}"
-                        Command="{Binding OpenPopupCommand}"
-                        FlowDirection="{Binding FlowDirection}"
-                        FontFamily="{Binding FontFamily}"
-                        Text="{Binding DisplayText}" />
+                        Command="{TemplateBinding OpenPopupCommand}"
+                        FlowDirection="{TemplateBinding FlowDirection}"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        Text="{TemplateBinding DisplayText}" />
                 </ControlTemplate>
             </Setter>
         </Style>

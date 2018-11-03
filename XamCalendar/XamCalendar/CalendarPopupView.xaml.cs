@@ -13,11 +13,11 @@ using Xamarin.Forms.Xaml;
 
 namespace XamCalendar
 {
-    public partial class CalendarPopupView : PopupPage 
-	{
-		public CalendarPopupView ()
-		{
-			InitializeComponent ();
+    public partial class CalendarPopupView : PopupPage
+    {
+        public CalendarPopupView()
+        {
+            InitializeComponent();
 
             SelectDateCommand = new Command<CalendarDay>(SelectDate);
 
@@ -76,7 +76,7 @@ namespace XamCalendar
             if (CalendarSystem != CalendarSystemProperty.DefaultValue)
                 CurrentDay = CurrentDay.WithCalendar(CalendarSystem);
 
-            CalendarTitle = CurrentDay.ToString("MMM yyyy", Culture);
+            CalendarTitle = CurrentDay.ToString(Culture.DateTimeFormat.YearMonthPattern, Culture);
 
             int thisMonthDaysCount = CurrentDay.Calendar.GetDaysInMonth(CurrentDay.Year, CurrentDay.Month);
 
