@@ -9,7 +9,6 @@
             <Setter Property="ControlTemplate">
                 <ControlTemplate>
                     <Button
-                        BackgroundColor="LightBlue"
                         Command="{TemplateBinding OpenPopupCommand}"
                         FontFamily="{TemplateBinding FontFamily}"
                         Text="{TemplateBinding DisplayText}" />
