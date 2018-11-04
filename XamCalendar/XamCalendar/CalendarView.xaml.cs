@@ -120,6 +120,8 @@ namespace XamCalendar
 
             Ar.DateTimeFormat.DayNames = Ar.DateTimeFormat.AbbreviatedDayNames = Ar.DateTimeFormat.ShortestDayNames = new[] { "الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت" };
 
+            Ar.DateTimeFormat.YearMonthPattern = Fa.DateTimeFormat.YearMonthPattern = "MMMM yyyy";
+
             _CultureInfoCache = new Dictionary<string, CultureInfo>
             {
                 { "Fa", Fa },
