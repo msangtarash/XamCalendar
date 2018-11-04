@@ -9,8 +9,8 @@
             <Setter Property="ControlTemplate">
                 <ControlTemplate>
                     <Button
+                        BackgroundColor="LightBlue"
                         Command="{TemplateBinding OpenPopupCommand}"
-                        FlowDirection="{TemplateBinding FlowDirection}"
                         FontFamily="{TemplateBinding FontFamily}"
                         Text="{TemplateBinding DisplayText}" />
                 </ControlTemplate>
