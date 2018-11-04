@@ -8,6 +8,10 @@ namespace XamCalendar
     {
         public App()
         {
+#if DEBUG
+            LiveReload.Init();
+#endif
+
             Log.Listeners.Add(new DelegateLogListener((arg1, arg2) => Debug.WriteLine(arg2)));
 
             InitializeComponent();
