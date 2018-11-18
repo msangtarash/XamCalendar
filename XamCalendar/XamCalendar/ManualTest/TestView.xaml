@@ -46,6 +46,22 @@
 
         <calendar:CalendarView Text="Please select a flight date" />
 
+        <calendar:CalendarView
+            SelectedColor="Yellow"
+            SelectedDate="{Binding SelectedDate}"
+            Text="Select..." />
+
+        <calendar:CalendarView
+            DateDisplayFormat="dd MMM yyyy"
+            SelectedColor="LightBlue"
+            SelectedDate="{Binding SelectedDate}"
+            Style="{StaticResource Persian-Solar-Calendar}"
+            Text="لطفا تاریخ پرواز را انتخاب کنید"
+            TodayColor="Blue" />
+
+        <Label Text="{Binding SelectedDate}" />
+        <Button Command="{Binding ChangeDate}" Text="Change date" />
+
     </StackLayout>
 
 </ContentPage>

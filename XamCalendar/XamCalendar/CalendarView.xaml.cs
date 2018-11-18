@@ -57,7 +57,11 @@ namespace XamCalendar
             set { SetValue(FontFamilyProperty, value); }
         }
 
-        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(CalendarView), defaultValue: null, defaultBindingMode: BindingMode.OneWayToSource /*Must be two way*/);
+        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(CalendarView), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: (sender, oldValue, newValue) =>
+        {
+            CalendarView calendarView = (CalendarView)sender;
+            calendarView.RaiseDisplayTextChanged();
+        });
         public virtual DateTime? SelectedDate
         {
             get { return (DateTime?)GetValue(SelectedDateProperty); }
@@ -87,6 +91,11 @@ namespace XamCalendar
 
         public virtual string Text { get; set; }
 
+        protected void RaiseDisplayTextChanged()
+        {
+            OnPropertyChanged((nameof(DisplayText)));
+        }
+
         public virtual string DisplayText
         {
             get
@@ -96,7 +105,6 @@ namespace XamCalendar
                     return new LocalDate(SelectedDate.Value.Year, SelectedDate.Value.Month, SelectedDate.Value.Day, CalendarSystem.Gregorian)
                          .WithCalendar(CalendarSystem)
                          .ToString(DateDisplayFormat ?? Culture.DateTimeFormat.ShortDatePattern, Culture);
-
                 }
                 else
                 {

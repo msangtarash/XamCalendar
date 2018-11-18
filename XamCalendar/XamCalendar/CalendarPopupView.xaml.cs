@@ -19,7 +19,7 @@ namespace XamCalendar
         {
             InitializeComponent();
 
-            SelectDateCommand = new Command<CalendarDay>(SelectDate);
+            SelectDateCommand = new Command<CalendarDay>(SyncViewModelWithView);
 
             ShowNextMonthCommand = new Command(ShowNextMonth);
 
@@ -42,17 +42,35 @@ namespace XamCalendar
             CalcCurrentMonthDays();
         }
 
-        public virtual void SelectDate(CalendarDay selectedDay)
+        protected virtual void SyncViewModelWithView(CalendarDay selectedDay)
         {
             foreach (CalendarDay day in Days)
             {
                 if (day == null)
                     continue;
 
-                day.IsSelected = day == selectedDay ? true : false;
+                bool isSelected = day == selectedDay ? true : false;
 
-                if (day.IsSelected)
+                if (isSelected)
                     SelectedDate = day.LocalDate.ToDateTimeUnspecified();
+            }
+        }
+
+        protected virtual void SyncViewWithViewModel()
+        {
+            foreach (CalendarDay day in Days)
+            {
+                if (day == null)
+                    continue;
+
+                if (SelectedDate == null)
+                {
+                    day.IsSelected = false;
+                }
+                else
+                {
+                    day.IsSelected = day.LocalDate.ToDateTimeUnspecified() == SelectedDate.Value ? true : false;
+                }
             }
         }
 
@@ -157,7 +175,11 @@ namespace XamCalendar
             set { SetValue(FontFamilyProperty, value); }
         }
 
-        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(CalendarPopupView), defaultValue: null, defaultBindingMode: BindingMode.OneWayToSource /*Must be two way*/);
+        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(CalendarPopupView), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: (sender, oldValue, newValue) =>
+        {
+            CalendarPopupView calendarPopupView = (CalendarPopupView)sender;
+            calendarPopupView.SyncViewWithViewModel();
+        });
         public virtual DateTime? SelectedDate
         {
             get { return (DateTime?)GetValue(SelectedDateProperty); }
