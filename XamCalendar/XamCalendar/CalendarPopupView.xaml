@@ -18,7 +18,7 @@
                         HorizontalOptions="Center"
                         Spacing="0"
                         VerticalOptions="Center"
-                        WidthRequest="500">
+                        WidthRequest="400">
                         <StackLayout.Resources>
 
                             <Style TargetType="Label">
@@ -73,7 +73,7 @@
                             ColumnSpacing="0"
                             CompressedLayout.IsHeadless="True"
                             RowSpacing="0">
-                            
+
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1" />
                                 <RowDefinition Height="Auto" />

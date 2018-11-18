@@ -10,7 +10,6 @@
                 <ControlTemplate>
                     <Button
                         Command="{TemplateBinding OpenPopupCommand}"
-                        FlowDirection="{TemplateBinding FlowDirection}"
                         FontFamily="{TemplateBinding FontFamily}"
                         Text="{TemplateBinding DisplayText}" />
                 </ControlTemplate>

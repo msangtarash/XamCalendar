@@ -116,9 +116,17 @@ namespace XamCalendar
 
     public class StringToCultureInfoConverter : TypeConverter
     {
-        private static readonly Dictionary<string, CultureInfo> _CultureInfoCache;
+        public override object ConvertFromInvariantString(string value)
+        {
+            return CultureInfoProvider.Current.GetCultureInfo(value);
+        }
+    }
 
-        static StringToCultureInfoConverter()
+    public class CultureInfoProvider
+    {
+        private readonly Dictionary<string, CultureInfo> _CultureInfoCache;
+
+        public CultureInfoProvider()
         {
             CultureInfo Fa = new CultureInfo("Fa");
 
@@ -128,6 +136,8 @@ namespace XamCalendar
 
             Ar.DateTimeFormat.DayNames = Ar.DateTimeFormat.AbbreviatedDayNames = Ar.DateTimeFormat.ShortestDayNames = new[] { "الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت" };
 
+            Ar.DateTimeFormat.YearMonthPattern = Fa.DateTimeFormat.YearMonthPattern = "MMMM yyyy";
+
             _CultureInfoCache = new Dictionary<string, CultureInfo>
             {
                 { "Fa", Fa },
@@ -135,14 +145,27 @@ namespace XamCalendar
             };
         }
 
-        public static CultureInfo GetCultureInfo(string cultureName)
+        public virtual CultureInfo GetCultureInfo(string cultureName)
         {
             return _CultureInfoCache.ContainsKey(cultureName) ? _CultureInfoCache[cultureName] : CultureInfo.GetCultureInfo(cultureName);
         }
 
-        public override object ConvertFromInvariantString(string value)
+        private static CultureInfoProvider _Current;
+
+        public static CultureInfoProvider Current
         {
-            return GetCultureInfo(value);
+            get
+            {
+                _Current = _Current ?? new CultureInfoProvider { };
+                return _Current;
+            }
+            set
+            {
+                if (_Current != null)
+                    throw new InvalidOperationException($"{nameof(Current)} {nameof(CultureInfoProvider)} has been already set.");
+
+                _Current = value ?? throw new InvalidOperationException($"{nameof(Current)} {nameof(CultureInfoProvider)} may not be null.");
+            }
         }
     }
 }
