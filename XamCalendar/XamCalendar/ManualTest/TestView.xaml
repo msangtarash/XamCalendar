@@ -3,18 +3,19 @@
     x:Class="XamCalendar.TestView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:calendar="clr-namespace:XamCalendar"
+    xmlns:app="clr-namespace:XamCalendar"
+    xmlns:bitControls="clr-namespace:Bit.CSharpClient.Controls"
     BackgroundColor="LightGray">
 
     <ContentPage.BindingContext>
-        <calendar:TestViewModel />
+        <app:TestViewModel />
     </ContentPage.BindingContext>
 
     <StackLayout>
 
-        <calendar:BitDatePicker Style="{StaticResource Persian-Solar-Calendar}" Text="لطفا تاریخ پرواز را انتخاب کنید" />
+        <bitControls:BitDatePicker Style="{StaticResource Persian-Solar-Calendar}" Text="لطفا تاریخ پرواز را انتخاب کنید" />
 
-        <calendar:BitDatePicker
+        <bitControls:BitDatePicker
             DateDisplayFormat="dd MMM yyyy"
             FlowDirection="RightToLeft"
             SelectedColor="LightBlue"
@@ -22,14 +23,14 @@
             Text="لطفا تاریخ پرواز را انتخاب کنید"
             TodayColor="Blue" />
 
-        <calendar:BitDatePicker
+        <bitControls:BitDatePicker
             DateDisplayFormat="dd MMM yyyy"
             FlowDirection="RightToLeft"
             SelectedColor="LightBlue"
             Style="{StaticResource Persian-Solar-Calendar}"
             Text="لطفا تاریخ پرواز را انتخاب کنید"
             TodayColor="Blue">
-            <calendar:BitDatePicker.ControlTemplate>
+            <bitControls:BitDatePicker.ControlTemplate>
                 <ControlTemplate>
                     <Label
                         FontFamily="{TemplateBinding FontFamily}"
@@ -40,17 +41,17 @@
                         </Label.GestureRecognizers>
                     </Label>
                 </ControlTemplate>
-            </calendar:BitDatePicker.ControlTemplate>
-        </calendar:BitDatePicker>
+            </bitControls:BitDatePicker.ControlTemplate>
+        </bitControls:BitDatePicker>
 
-        <calendar:BitDatePicker
+        <bitControls:BitDatePicker
             FlowDirection="RightToLeft"
             Style="{StaticResource Islamic-Calendar}"
             Text="يرجى تحديد تاريخ الرحلة" />
 
-        <calendar:BitDatePicker FlowDirection="LeftToRight" Text="Please select a flight date" />
+        <bitControls:BitDatePicker FlowDirection="LeftToRight" Text="Please select a flight date" />
 
-        <calendar:BitDatePicker
+        <bitControls:BitDatePicker
             DateDisplayFormat="dd MMM yyyy"
             SelectedColor="LightBlue"
             SelectedDate="{Binding SelectedDate}"

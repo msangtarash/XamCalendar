@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
-namespace XamCalendar
+namespace Bit.CSharpClient.Controls
 {
     public partial class BitCalendarPopupView : PopupPage
     {
@@ -25,7 +25,7 @@ namespace XamCalendar
 
             ShowPreviousMonthCommand = new Command(ShowPreviousMonth);
 
-            CurrentDay = new LocalDate(DateTimeOffset.Now.Year, DateTimeOffset.Now.Month, DateTimeOffset.Now.Day, CalendarSystem.Gregorian);
+            CurrentDay = new LocalDate(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, CalendarSystem.Gregorian);
 
             CalcCurrentMonthDays();
         }

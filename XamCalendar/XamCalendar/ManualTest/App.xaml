@@ -3,8 +3,7 @@
     x:Class="XamCalendar.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:calendar="clr-namespace:XamCalendar;assembly=XamCalendar"
-    xmlns:culture="clr-namespace:System.Globalization;assembly=netstandard"
+    xmlns:bitControls="clr-namespace:Bit.CSharpClient.Controls"
     xmlns:noda="clr-namespace:NodaTime;assembly=NodaTime">
     <Application.Resources>
         <ResourceDictionary>
@@ -13,13 +12,13 @@
                 <On Platform="UWP" Value="Assets/Vazir-Light-FD-WOL.ttf#Vazir FD-WOL" />
                 <On Platform="Android" Value="Vazir-Light-FD-WOL.ttf#Vazir FD-WOL" />
             </OnPlatform>
-            <Style x:Key="Persian-Solar-Calendar" TargetType="calendar:BitDatePicker">
+            <Style x:Key="Persian-Solar-Calendar" TargetType="bitControls:BitDatePicker">
                 <Setter Property="FontFamily" Value="{StaticResource Persian-Solar-Calendar-FontFamily}" />
                 <Setter Property="FlowDirection" Value="RightToLeft" />
                 <Setter Property="CalendarSystem" Value="{x:Static noda:CalendarSystem.PersianArithmetic}" />
                 <Setter Property="Culture" Value="Fa" />
             </Style>
-            <Style x:Key="Islamic-Calendar" TargetType="calendar:BitDatePicker">
+            <Style x:Key="Islamic-Calendar" TargetType="bitControls:BitDatePicker">
                 <Setter Property="FlowDirection" Value="RightToLeft" />
                 <Setter Property="CalendarSystem" Value="{x:Static noda:CalendarSystem.IslamicBcl}" />
                 <Setter Property="Culture" Value="Ar" />

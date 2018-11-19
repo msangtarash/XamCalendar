@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace XamCalendar
+namespace Bit.CSharpClient.Controls
 {
     public partial class BitCalendarDayView : TemplatedView
     {
