@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage
-    x:Class="XamCalendar.CalendarPopupView"
+    x:Class="XamCalendar.BitCalendarPopupView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:calendar="clr-namespace:XamCalendar"
@@ -8,7 +8,7 @@
 
     <pages:PopupPage.Resources>
 
-        <Style TargetType="calendar:CalendarPopupView">
+        <Style TargetType="calendar:BitCalendarPopupView">
             <Setter Property="ControlTemplate">
                 <ControlTemplate>
                     <StackLayout
@@ -32,7 +32,7 @@
                                 <Setter Property="Margin" Value="0,1" />
                             </Style>
 
-                            <Style BaseResourceKey="DefaultCalendarDayViewStyle" TargetType="calendar:CalendarDayView">
+                            <Style BaseResourceKey="DefaultBitCalendarDayViewStyle" TargetType="calendar:BitCalendarDayView">
                                 <Setter Property="SelectDateCommand" Value="{Binding SelectDateCommand}" />
                                 <Setter Property="FontFamily" Value="{Binding FontFamily}" />
                                 <Setter Property="SelectedColor" Value="{Binding SelectedColor}" />
@@ -126,176 +126,176 @@
                                 Grid.Column="6"
                                 Text="{Binding DaysOfWeekNames[6]}" />
 
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="0"
                                 Day="{Binding Days[0]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="1"
                                 Day="{Binding Days[1]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="2"
                                 Day="{Binding Days[2]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="3"
                                 Day="{Binding Days[3]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="4"
                                 Day="{Binding Days[4]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="5"
                                 Day="{Binding Days[5]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="3"
                                 Grid.Column="6"
                                 Day="{Binding Days[6]}" />
 
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="0"
                                 Day="{Binding Days[7]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="1"
                                 Day="{Binding Days[8]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="2"
                                 Day="{Binding Days[9]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="3"
                                 Day="{Binding Days[10]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="4"
                                 Day="{Binding Days[11]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="5"
                                 Day="{Binding Days[12]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="4"
                                 Grid.Column="6"
                                 Day="{Binding Days[13]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="0"
                                 Day="{Binding Days[14]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="1"
                                 Day="{Binding Days[15]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="2"
                                 Day="{Binding Days[16]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="3"
                                 Day="{Binding Days[17]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="4"
                                 Day="{Binding Days[18]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="5"
                                 Day="{Binding Days[19]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="5"
                                 Grid.Column="6"
                                 Day="{Binding Days[20]}" />
 
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="0"
                                 Day="{Binding Days[21]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="1"
                                 Day="{Binding Days[22]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="2"
                                 Day="{Binding Days[23]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="3"
                                 Day="{Binding Days[24]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="4"
                                 Day="{Binding Days[25]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="5"
                                 Day="{Binding Days[26]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="6"
                                 Grid.Column="6"
                                 Day="{Binding Days[27]}" />
 
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="0"
                                 Day="{Binding Days[28]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="1"
                                 Day="{Binding Days[29]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="2"
                                 Day="{Binding Days[30]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="3"
                                 Day="{Binding Days[31]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="4"
                                 Day="{Binding Days[32]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="5"
                                 Day="{Binding Days[33]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="7"
                                 Grid.Column="6"
                                 BindingContext="{Binding}"
                                 Day="{Binding Days[34]}" />
 
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="8"
                                 Grid.Column="0"
                                 Day="{Binding Days[35]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="8"
                                 Grid.Column="1"
                                 Day="{Binding Days[36]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="8"
                                 Grid.Column="2"
                                 Day="{Binding Days[37]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="8"
                                 Grid.Column="3"
                                 Day="{Binding Days[38]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="8"
                                 Grid.Column="4"
                                 Day="{Binding Days[39]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="8"
                                 Grid.Column="5"
                                 Day="{Binding Days[40]}" />
-                            <calendar:CalendarDayView
+                            <calendar:BitCalendarDayView
                                 Grid.Row="8"
                                 Grid.Column="6"
                                 Day="{Binding Days[41]}" />

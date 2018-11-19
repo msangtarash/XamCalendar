@@ -37,5 +37,20 @@
     <PackageReference Condition=" '$(Configuration)' == 'Debug' " Include="Xamarin.LiveReload" Version="0.3.27" />
     <PackageReference Condition=" '$(Configuration)' == 'Debug' " Include="LiveXAML" Version="2.1.44" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="BitDatePicker.xaml.cs">
+      <DependentUpon>BitDatePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="BitCalendarDayView.xaml.cs">
+      <DependentUpon>BitCalendarDayView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="BitCalendarPopupView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
   
 </Project>

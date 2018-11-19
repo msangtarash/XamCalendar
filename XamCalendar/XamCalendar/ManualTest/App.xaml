@@ -13,13 +13,13 @@
                 <On Platform="UWP" Value="Assets/Vazir-Light-FD-WOL.ttf#Vazir FD-WOL" />
                 <On Platform="Android" Value="Vazir-Light-FD-WOL.ttf#Vazir FD-WOL" />
             </OnPlatform>
-            <Style x:Key="Persian-Solar-Calendar" TargetType="calendar:CalendarView">
+            <Style x:Key="Persian-Solar-Calendar" TargetType="calendar:BitDatePicker">
                 <Setter Property="FontFamily" Value="{StaticResource Persian-Solar-Calendar-FontFamily}" />
                 <Setter Property="FlowDirection" Value="RightToLeft" />
                 <Setter Property="CalendarSystem" Value="{x:Static noda:CalendarSystem.PersianArithmetic}" />
                 <Setter Property="Culture" Value="Fa" />
             </Style>
-            <Style x:Key="Islamic-Calendar" TargetType="calendar:CalendarView">
+            <Style x:Key="Islamic-Calendar" TargetType="calendar:BitDatePicker">
                 <Setter Property="FlowDirection" Value="RightToLeft" />
                 <Setter Property="CalendarSystem" Value="{x:Static noda:CalendarSystem.IslamicBcl}" />
                 <Setter Property="Culture" Value="Ar" />

@@ -12,9 +12,9 @@
 
     <StackLayout>
 
-        <calendar:CalendarView Style="{StaticResource Persian-Solar-Calendar}" Text="لطفا تاریخ پرواز را انتخاب کنید" />
+        <calendar:BitDatePicker Style="{StaticResource Persian-Solar-Calendar}" Text="لطفا تاریخ پرواز را انتخاب کنید" />
 
-        <calendar:CalendarView
+        <calendar:BitDatePicker
             DateDisplayFormat="dd MMM yyyy"
             FlowDirection="RightToLeft"
             SelectedColor="LightBlue"
@@ -22,14 +22,14 @@
             Text="لطفا تاریخ پرواز را انتخاب کنید"
             TodayColor="Blue" />
 
-        <calendar:CalendarView
+        <calendar:BitDatePicker
             DateDisplayFormat="dd MMM yyyy"
             FlowDirection="RightToLeft"
             SelectedColor="LightBlue"
             Style="{StaticResource Persian-Solar-Calendar}"
             Text="لطفا تاریخ پرواز را انتخاب کنید"
             TodayColor="Blue">
-            <calendar:CalendarView.ControlTemplate>
+            <calendar:BitDatePicker.ControlTemplate>
                 <ControlTemplate>
                     <Label
                         FontFamily="{TemplateBinding FontFamily}"
@@ -40,22 +40,17 @@
                         </Label.GestureRecognizers>
                     </Label>
                 </ControlTemplate>
-            </calendar:CalendarView.ControlTemplate>
-        </calendar:CalendarView>
+            </calendar:BitDatePicker.ControlTemplate>
+        </calendar:BitDatePicker>
 
-        <calendar:CalendarView
+        <calendar:BitDatePicker
             FlowDirection="RightToLeft"
             Style="{StaticResource Islamic-Calendar}"
             Text="يرجى تحديد تاريخ الرحلة" />
 
-        <calendar:CalendarView FlowDirection="LeftToRight" Text="Please select a flight date" />
+        <calendar:BitDatePicker FlowDirection="LeftToRight" Text="Please select a flight date" />
 
-        <calendar:CalendarView
-            SelectedColor="Yellow"
-            SelectedDate="{Binding SelectedDate}"
-            Text="Select..." />
-
-        <calendar:CalendarView
+        <calendar:BitDatePicker
             DateDisplayFormat="dd MMM yyyy"
             SelectedColor="LightBlue"
             SelectedDate="{Binding SelectedDate}"

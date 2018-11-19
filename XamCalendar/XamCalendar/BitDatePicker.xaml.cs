@@ -8,34 +8,34 @@ using Xamarin.Forms;
 
 namespace XamCalendar
 {
-    public partial class CalendarView : TemplatedView
+    public partial class BitDatePicker : TemplatedView
     {
-        public CalendarView()
+        public BitDatePicker()
         {
             InitializeComponent();
 
-            CalendarPopupView = new CalendarPopupView() { };
+            BitCalendarPopupView = new BitCalendarPopupView() { };
 
-            CalendarPopupView.SetBinding(CalendarPopupView.CultureProperty, new Binding(nameof(Culture), source: this));
-            CalendarPopupView.SetBinding(CalendarPopupView.CalendarSystemProperty, new Binding(nameof(CalendarSystem), source: this));
-            CalendarPopupView.SetBinding(CalendarPopupView.SelectedColorProperty, new Binding(nameof(SelectedColor), source: this));
-            CalendarPopupView.SetBinding(CalendarPopupView.TodayColorProperty, new Binding(nameof(TodayColor), source: this));
-            CalendarPopupView.SetBinding(CalendarPopupView.SelectedDateProperty, new Binding(nameof(SelectedDate), source: this));
-            CalendarPopupView.SetBinding(CalendarPopupView.FontFamilyProperty, new Binding(nameof(FontFamily), source: this));
-            CalendarPopupView.SetBinding(FlowDirectionProperty, new Binding(nameof(FlowDirection), source: this));
+            BitCalendarPopupView.SetBinding(BitCalendarPopupView.CultureProperty, new Binding(nameof(Culture), source: this));
+            BitCalendarPopupView.SetBinding(BitCalendarPopupView.CalendarSystemProperty, new Binding(nameof(CalendarSystem), source: this));
+            BitCalendarPopupView.SetBinding(BitCalendarPopupView.SelectedColorProperty, new Binding(nameof(SelectedColor), source: this));
+            BitCalendarPopupView.SetBinding(BitCalendarPopupView.TodayColorProperty, new Binding(nameof(TodayColor), source: this));
+            BitCalendarPopupView.SetBinding(BitCalendarPopupView.SelectedDateProperty, new Binding(nameof(SelectedDate), source: this));
+            BitCalendarPopupView.SetBinding(BitCalendarPopupView.FontFamilyProperty, new Binding(nameof(FontFamily), source: this));
+            BitCalendarPopupView.SetBinding(FlowDirectionProperty, new Binding(nameof(FlowDirection), source: this));
 
             OpenPopupCommand = new Command(OpenPopup);
         }
 
         public virtual void OpenPopup()
         {
-            PopupNavigation.Instance.PushAsync(CalendarPopupView);
+            PopupNavigation.Instance.PushAsync(BitCalendarPopupView);
         }
 
-        public virtual CalendarPopupView CalendarPopupView { get; protected set; }
+        public virtual BitCalendarPopupView BitCalendarPopupView { get; protected set; }
         public virtual ICommand OpenPopupCommand { get; protected set; }
 
-        public static BindableProperty CultureProperty = BindableProperty.Create(nameof(Culture), typeof(CultureInfo), typeof(CalendarView), defaultValue: CultureInfo.CurrentUICulture, defaultBindingMode: BindingMode.OneWay);
+        public static BindableProperty CultureProperty = BindableProperty.Create(nameof(Culture), typeof(CultureInfo), typeof(BitDatePicker), defaultValue: CultureInfo.CurrentUICulture, defaultBindingMode: BindingMode.OneWay);
         [TypeConverter(typeof(StringToCultureInfoConverter))]
         public virtual CultureInfo Culture
         {
@@ -43,24 +43,24 @@ namespace XamCalendar
             set { SetValue(CultureProperty, value); }
         }
 
-        public static BindableProperty CalendarSystemProperty = BindableProperty.Create(nameof(CalendarSystem), typeof(CalendarSystem), typeof(CalendarView), defaultValue: CalendarSystem.Gregorian, defaultBindingMode: BindingMode.OneWay);
+        public static BindableProperty CalendarSystemProperty = BindableProperty.Create(nameof(CalendarSystem), typeof(CalendarSystem), typeof(BitDatePicker), defaultValue: CalendarSystem.Gregorian, defaultBindingMode: BindingMode.OneWay);
         public virtual CalendarSystem CalendarSystem
         {
             get { return (CalendarSystem)GetValue(CalendarSystemProperty); }
             set { SetValue(CalendarSystemProperty, value); }
         }
 
-        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(CalendarView), defaultValue: null, defaultBindingMode: BindingMode.OneWay);
+        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(BitDatePicker), defaultValue: null, defaultBindingMode: BindingMode.OneWay);
         public virtual string FontFamily
         {
             get { return (string)GetValue(FontFamilyProperty); }
             set { SetValue(FontFamilyProperty, value); }
         }
 
-        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(CalendarView), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: (sender, oldValue, newValue) =>
+        public static BindableProperty SelectedDateProperty = BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(BitDatePicker), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: (sender, oldValue, newValue) =>
         {
-            CalendarView calendarView = (CalendarView)sender;
-            calendarView.RaiseDisplayTextChanged();
+            BitDatePicker BitDatePicker = (BitDatePicker)sender;
+            BitDatePicker.RaiseDisplayTextChanged();
         });
         public virtual DateTime? SelectedDate
         {
@@ -68,21 +68,21 @@ namespace XamCalendar
             set { SetValue(SelectedDateProperty, value); }
         }
 
-        public static BindableProperty TodayColorProperty = BindableProperty.Create(nameof(TodayColor), typeof(Color), typeof(CalendarView), defaultValue: Color.DeepPink, defaultBindingMode: BindingMode.OneWay);
+        public static BindableProperty TodayColorProperty = BindableProperty.Create(nameof(TodayColor), typeof(Color), typeof(BitDatePicker), defaultValue: Color.DeepPink, defaultBindingMode: BindingMode.OneWay);
         public virtual Color TodayColor
         {
             get { return (Color)GetValue(TodayColorProperty); }
             set { SetValue(TodayColorProperty, value); }
         }
 
-        public static BindableProperty SelectedColorProperty = BindableProperty.Create(nameof(SelectedColor), typeof(Color), typeof(CalendarView), defaultValue: Color.DeepPink, defaultBindingMode: BindingMode.OneWay);
+        public static BindableProperty SelectedColorProperty = BindableProperty.Create(nameof(SelectedColor), typeof(Color), typeof(BitDatePicker), defaultValue: Color.DeepPink, defaultBindingMode: BindingMode.OneWay);
         public virtual Color SelectedColor
         {
             get { return (Color)GetValue(SelectedColorProperty); }
             set { SetValue(SelectedColorProperty, value); }
         }
 
-        public static readonly BindableProperty DateDisplayFormatProperty = BindableProperty.Create(nameof(DateDisplayFormat), typeof(string), typeof(CalendarView), defaultValue: null, defaultBindingMode: BindingMode.OneWay);
+        public static readonly BindableProperty DateDisplayFormatProperty = BindableProperty.Create(nameof(DateDisplayFormat), typeof(string), typeof(BitDatePicker), defaultValue: null, defaultBindingMode: BindingMode.OneWay);
         public virtual string DateDisplayFormat
         {
             get { return (string)GetValue(DateDisplayFormatProperty); }
